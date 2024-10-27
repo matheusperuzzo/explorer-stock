@@ -12,7 +12,7 @@ productsRoutes.use(ensureAuthenticated);
 productsRoutes.get("/", productsController.index);
 productsRoutes.post(
   "/",
-  verifyUserAuthorization("admin"),
+  verifyUserAuthorization(["admin"]),
   productsController.create
 );
 

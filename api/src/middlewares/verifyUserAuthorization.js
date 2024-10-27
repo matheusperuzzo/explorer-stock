@@ -1,10 +1,10 @@
 const AppError = require("../utils/AppError");
 
-function verifyUserAuthorization(roleToVerify) {
+function verifyUserAuthorization(rolesToVerify) {
   return (request, response, next) => {
     const { role } = request.user;
 
-    if (roleToVerify !== role) {
+    if (rolesToVerify.includes(role)) {
       throw new AppError("Unauthorized", 403);
     }
 
