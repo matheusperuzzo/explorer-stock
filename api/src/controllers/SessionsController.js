@@ -33,9 +33,16 @@ class SessionsController {
       }
     );
 
+    response.cookie("token", token, {
+      httpOnly: true,
+      sameSite: "Strict",
+      secure: true,
+      maxAge: 15 * 60 * 1000,
+    });
+
     delete user.password;
 
-    response.status(201).json({ token, user });
+    response.status(201).json({ user });
   }
 }
 
